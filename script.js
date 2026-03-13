@@ -77,6 +77,30 @@
 })();
 
 
+/* ── 2a. MOBILE MENU TOGGLE ── */
+(function () {
+  const toggle = document.querySelector('.menu-toggle');
+  const navPill = document.querySelector('.nav-pill');
+  const links = document.querySelectorAll('.nav-link');
+
+  if (!toggle || !navPill) return;
+
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    navPill.classList.toggle('active');
+    document.body.style.overflow = navPill.classList.contains('active') ? 'hidden' : '';
+  });
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('active');
+      navPill.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+
+
 /* ── 3. SMOOTH ANCHOR SCROLL ── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
