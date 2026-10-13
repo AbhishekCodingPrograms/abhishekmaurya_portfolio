@@ -140,11 +140,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   if (!el) return;
 
   const roles = [
-    'AI & ML Enthusiast',
-    'Data Analyst',
-    'Python Developer',
-    'Problem Solver',
-    'Deep Learning Explorer',
+    'AI & Machine Learning Engineer',
+    'Computer Vision Specialist',
+    'Deep Learning & NLP Developer',
+    'Python & Full-Stack Builder',
   ];
   let ri = 0, ci = 0, deleting = false;
 
@@ -153,14 +152,14 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (!deleting) {
       el.textContent = role.slice(0, ++ci);
       if (ci === role.length) { deleting = true; setTimeout(tick, 1800); return; }
-      setTimeout(tick, 65);
+      setTimeout(tick, 60);
     } else {
       el.textContent = role.slice(0, --ci);
       if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; setTimeout(tick, 400); return; }
-      setTimeout(tick, 35);
+      setTimeout(tick, 30);
     }
   }
-  setTimeout(tick, 800);
+  setTimeout(tick, 600);
 })();
 
 
@@ -172,32 +171,31 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   // Color-tagged spans for syntax highlighting
   const lines = [
     [
-      { cls: 'kw', t: 'import' }, { cls: 'op', t: ' transformers, torch' }
+      { cls: 'kw', t: 'import' }, { cls: 'op', t: ' cv2, mediapipe as mp' }
+    ],
+    [
+      { cls: 'kw', t: 'from' }, { cls: 'op', t: ' sklearn.pipeline ' }, { cls: 'kw', t: 'import' }, { cls: 'op', t: ' Pipeline' }
     ],
     [],
     [
-      { cls: 'var', t: 'model_id' }, { cls: 'op', t: ' = ' }, { cls: 'st', t: '"meta-llama/Llama-3.1-8B"' }
+      { cls: 'cm', t: '# Real-time Vision & Kinematics Engine' }
+    ],
+    [
+      { cls: 'var', t: 'engine' }, { cls: 'op', t: ' = ' }, { cls: 'fn', t: 'VisionEngine' }, { cls: 'op', t: '(fps=' }, { cls: 'nm', t: '60' }, { cls: 'op', t: ')' }
+    ],
+    [
+      { cls: 'var', t: 'landmarks' }, { cls: 'op', t: ' = ' }, { cls: 'var', t: 'engine' }, { cls: 'op', t: '.' }, { cls: 'fn', t: 'track_pose' }, { cls: 'op', t: '()' }
     ],
     [],
     [
-      { cls: 'var', t: 'pipeline' }, { cls: 'op', t: ' = ' },
-      { cls: 'fn', t: 'transformers' }, { cls: 'op', t: '.pipeline(' },
-      { cls: 'st', t: '"text-generation"' }, { cls: 'op', t: ', model...)' }
+      { cls: 'var', t: 'posture' }, { cls: 'op', t: ' = ' }, { cls: 'var', t: 'engine' }, { cls: 'op', t: '.' }, { cls: 'fn', t: 'evaluate_form' }, { cls: 'op', t: '(' }, { cls: 'var', t: 'landmarks' }, { cls: 'op', t: ')' }
+    ],
+    [
+      { cls: 'fn', t: 'print' }, { cls: 'op', t: '(f' }, { cls: 'st', t: '"Status: Valid Kinematics | 60 FPS"' }, { cls: 'op', t: ')' }
     ],
     [],
     [
-      { cls: 'var', t: 'response' }, { cls: 'op', t: ' = ' },
-      { cls: 'fn', t: 'pipeline' }, { cls: 'op', t: '(' },
-      { cls: 'st', t: '"Create AI solutions"' }, { cls: 'op', t: ')' }
-    ],
-    [],
-    [
-      { cls: 'fn', t: 'print' }, { cls: 'op', t: '(' },
-      { cls: 'st', t: '"Building intelligent systems"' }, { cls: 'op', t: ')' }
-    ],
-    [],
-    [
-      { cls: 'cm', t: '# Transforming ideas into reality 🚀' }
+      { cls: 'cm', t: '# Engineering intelligent systems for real impact 🚀' }
     ],
   ];
 
