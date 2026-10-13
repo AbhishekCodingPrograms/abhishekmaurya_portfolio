@@ -81,22 +81,35 @@
 (function () {
   const toggle = document.querySelector('.menu-toggle');
   const navPill = document.querySelector('.nav-pill');
-  const links = document.querySelectorAll('.nav-link');
+  const overlay = document.querySelector('.nav-overlay');
+  const drawerClose = document.getElementById('drawerClose');
+  const interactiveLinks = document.querySelectorAll('.nav-link, .drawer-btn');
 
-  if (!toggle || !navPill) return;
+  function openMenu() {
+    if (toggle) toggle.classList.add('active');
+    if (navPill) navPill.classList.add('active');
+    if (overlay) overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 
-  toggle.addEventListener('click', () => {
-    toggle.classList.toggle('active');
-    navPill.classList.toggle('active');
-    document.body.style.overflow = navPill.classList.contains('active') ? 'hidden' : '';
-  });
+  function closeMenu() {
+    if (toggle) toggle.classList.remove('active');
+    if (navPill) navPill.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      toggle.classList.remove('active');
-      navPill.classList.remove('active');
-      document.body.style.overflow = '';
+  if (toggle && navPill) {
+    toggle.addEventListener('click', () => {
+      navPill.classList.contains('active') ? closeMenu() : openMenu();
     });
+  }
+
+  if (drawerClose) drawerClose.addEventListener('click', closeMenu);
+  if (overlay) overlay.addEventListener('click', closeMenu);
+
+  interactiveLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
   });
 })();
 
